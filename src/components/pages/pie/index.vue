@@ -16,6 +16,23 @@
     <box-container class='bg-grey' :spinShow='spinShow3' @showOptionHandler='showOption("pie3")'>
       <pie-style-3 sid='pie3' :source='eventHandlingData' ref='pie3' />
     </box-container>
+
+
+    <box-container class='bg-grey' :spinShow='spinShow3' @showOptionHandler='showOption("pie4")'>
+      <pie-style-3 sid='pie4' :source='eventHandlingData' ref='pie4' />
+    </box-container>
+
+    <box-container class='bg-grey' :spinShow='spinShow3' @showOptionHandler='showOption("pie4")'>
+      <pie-style-3 sid='pie5' :source='eventHandlingData' ref='pie5' />
+    </box-container>
+    <box-container class='bg-grey' :spinShow='spinShow3' @showOptionHandler='showOption("pie4")'>
+      <pie-style-3 sid='pie6' :source='eventHandlingData' ref='pie6' />
+    </box-container>
+
+    <box-container class='bg-grey' :spinShow='spinShow3' @showOptionHandler='showOption("pie4")'>
+      <pie-style-3 sid='pie7' :source='eventHandlingData' ref='pie7' />
+    </box-container>
+
   </div>
 </template>
 <script>
@@ -81,21 +98,44 @@ export default {
           })
       })
     // pie-style-3 fetch data
-    this.$http.get('/pie/eventHandlingSource')
-      .then(res => {
-        if (res.state && res.data) {
-          this.eventHandlingData = res.data
-          this.spinShow3 = false
-        }
-      })
-      .catch(err => {
-        console.log(err)
-        this.$fetchMock('/static/mock/pie/eventHandlingSource.json')
-          .then(res => {
-            this.eventHandlingData = res
-            this.spinShow3 = false
-          })
-      })
+    // this.$http.get('/pie/eventHandlingSource')
+    //   .then(res => {
+    //     if (res.state && res.data) {
+    //       this.eventHandlingData = res.data
+    //       this.spinShow3 = false
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //     this.$fetchMock('/static/mock/pie/eventHandlingSource.json')
+    //       .then(res => {
+    //         this.eventHandlingData = res
+    //         this.spinShow3 = false
+    //       })
+    //   })
+  },
+  mounted() {
+    // this.$http.get('/pie/eventHandlingSource')
+    //   .then(res => {
+    //     if (res.state && res.data) {
+    //       this.eventHandlingData = res.data
+    //       this.spinShow3 = false
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //     this.$fetchMock('/static/mock/pie/eventHandlingSource.json')
+    //       .then(res => {
+    //         this.eventHandlingData = res
+    //         this.spinShow3 = false
+    //       })
+    //   })
+    this.eventHandlingData = {
+      '受理率': '6%',
+      '办理率': '85%',
+      '办结率': '95%',
+    }
+    this.spinShow3 = false
   },
   methods: {
     showOption(ref) {
