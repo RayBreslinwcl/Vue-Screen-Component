@@ -40,6 +40,8 @@ import boxContainer from '../common/box-container'
 import Pie1 from '../../cell/pie/pie-style-1'
 import Pie2 from '../../cell/pie/pie-style-2'
 import Pie3 from '../../cell/pie/pie-style-3'
+import axios from 'axios'
+
 export default {
   components: {
     'box-container': boxContainer,
@@ -130,12 +132,26 @@ export default {
     //         this.spinShow3 = false
     //       })
     //   })
-    this.eventHandlingData = {
-      '受理率': '6%',
-      '办理率': '85%',
-      '办结率': '95%',
-    }
-    this.spinShow3 = false
+
+    //下面手动是可以的
+    // this.eventHandlingData = {
+    //   '受理率': '6%',
+    //   '办理率': '85%',
+    //   '办结率': '95%',
+    // }
+    // this.spinShow3 = false
+
+    //axios引入
+    axios.get('http://localhost:8081/piedata').then((res) => {
+      // this.cdata = {
+      //   xData: res.xData,
+      //   seriesData: res.seriesData
+      // }
+      console.log(res)
+      this.eventHandlingData = res.data
+      this.spinShow3 = false
+    })
+
   },
   methods: {
     showOption(ref) {
